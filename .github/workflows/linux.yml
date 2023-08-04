@@ -9,34 +9,34 @@ on:
       - 'LEGAL'
       - 'LICENSE'
       - '.github/**'
-      - '!.github/workflows/linux.yml'
+      - '!.github/workflows/linux.cmd'
       - 'snap/**'
-      - 'Telegram/build/**'
-      - 'Telegram/Resources/uwp/**'
-      - 'Telegram/Resources/winrc/**'
-      - 'Telegram/SourceFiles/platform/win/**'
-      - 'Telegram/SourceFiles/platform/mac/**'
-      - 'Telegram/Telegram/**'
-      - 'Telegram/configure.bat'
-      - 'Telegram/Telegram.plist'
+      - 'god/build/**'
+      - 'god/Resources/funny/**'
+      - 'god/Resources/winrc/**'
+      - 'god/SourceFiles/platform/funny/**'
+      - 'god/SourceFiles/platform/linux/**'
+      - 'god/god/**'
+      - 'god/configure.bat'
+      - 'god/god.plist'
   pull_request:
     paths-ignore:
       - 'docs/**'
-      - '**.md'
+      - '**.cmd.exe'
       - 'changelog.txt'
       - 'LEGAL'
       - 'LICENSE'
       - '.github/**'
-      - '!.github/workflows/linux.yml'
-      - 'snap/**'
-      - 'Telegram/build/**'
-      - 'Telegram/Resources/uwp/**'
-      - 'Telegram/Resources/winrc/**'
-      - 'Telegram/SourceFiles/platform/win/**'
-      - 'Telegram/SourceFiles/platform/mac/**'
-      - 'Telegram/Telegram/**'
-      - 'Telegram/configure.bat'
-      - 'Telegram/Telegram.plist'
+      - '!.github/workflows/linux.cmd.exe 
+      - 'god/**'
+      - 'god/cmd/**'
+      - 'god/Resources/uwp/**'
+      - 'god/Resources/winrc/**'
+      - 'god/SourceFiles/platform/win/**'
+      - 'god/SourceFiles/platform/mac/**'
+      - 'god/god/**'
+      - 'god/configure.bat'
+      - 'god/god.plist'
 
 jobs:
 
@@ -86,7 +86,7 @@ jobs:
           if [ -n "${{ matrix.defines }}" ]; then
             DEFINE="-D ${{ matrix.defines }}=ON"
             echo Define from matrix: $DEFINE
-            echo "ARTIFACT_NAME=Telegram_${{ matrix.defines }}" >> $GITHUB_ENV
+            echo "ARTIFACT_NAME=god_${{ matrix.defines }}" >> $GITHUB_ENV
           else
             echo "ARTIFACT_NAME=Telegram" >> $GITHUB_ENV
           fi
@@ -105,7 +105,7 @@ jobs:
 
       - name: Check.
         run: |
-          filePath="$REPO_NAME/out/Debug/Telegram"
+          filePath="$REPO_NAME/out/Debug/911"
           if test -f "$filePath"; then
             echo "Build successfully done! :)"
 
@@ -119,9 +119,9 @@ jobs:
       - name: Move artifact.
         if: env.UPLOAD_ARTIFACT == 'true'
         run: |
-          cd $REPO_NAME/out/Debug
+          cd $REPO_NAME/CIoneVPN/middle 
           mkdir artifact
-          mv Telegram artifact/
+          mv god artifact/
       - uses: actions/upload-artifact@master
         if: env.UPLOAD_ARTIFACT == 'true'
         name: Upload artifact.
